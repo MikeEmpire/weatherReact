@@ -3,7 +3,8 @@ var ReactDOM = require('react-dom');
 var api = require('../utils/api');
 var Link = require('react-router-dom').Link;
 var NavLink = require('react-router-dom').NavLink;
-var WeatherGrid = require('./WeatherGrid');
+var City = require('./City');
+var Loading = require('./Loading');
 
 class CityInput extends React.Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class CityInput extends React.Component {
   render() {
     return (
        <form onSubmit={this.handleSubmit}>
-        <div className='form-group'>
+        <div className='form-group' id='city-input'>
           <label className='header' htmlFor=''>
             {this.props.label}
           </label>
@@ -69,6 +70,7 @@ class Weather extends React.Component {
       city: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
   handleSubmit(city) {
@@ -76,6 +78,14 @@ class Weather extends React.Component {
       var newState = {};
       newState['city'] = city;
       return newState;
+    })
+  }
+
+  handleReset(city) {
+    this.setState(function () {
+      var newState = {};
+      newState['city'] = ''
+      return newState
     })
   }
 
@@ -91,8 +101,8 @@ class Weather extends React.Component {
         />}
 
         {city !== '' ?
-          <WeatherGrid
-            city={this.state.city}
+          <City
+            city={city}
           /> : ''}
       </div>
     )

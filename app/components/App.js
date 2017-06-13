@@ -5,8 +5,7 @@ var Router = ReactRouter.BrowserRouter;
 var Route = ReactRouter.Route;
 var Switch = ReactRouter.Switch;
 var Weather = require('./Weather');
-var WeatherGrid = require('./WeatherGrid');
-var Results = require('./Results');
+var City = require('./City');
 var Navbar = require('./Navbar');
 var api = require('../utils/api');
 
@@ -19,7 +18,7 @@ class App extends React.Component {
 
           <Switch>
             <Route exact path='/' component={Weather} />
-            <Route path='/weathergrid' component={WeatherGrid}/>
+            <Route path='/city' component={City}/>
             <Route render={function () {
               return <p>Not Found</p>
             }} />
