@@ -12,16 +12,6 @@ function Navbar () {
             WeatherMan
           </NavLink>
         </div>
-        <form className="navbar-form navbar-right">
-          <div className="form-group">
-            <input type="text" className="form-control" placeholder="Search"></input>
-          </div>
-          <Link
-            type="submit"
-            className="btn btn-default"
-            to={'/results'}
-          >Submit</Link>
-        </form>
       </div>
     </nav>
   )

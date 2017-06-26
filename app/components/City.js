@@ -8,18 +8,16 @@ var Loading = require('./Loading');
 function WeatherGrid(props) {
   return (
     <div className='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
-
       {props.city.map(function (day, index){
+
         return (
           <div className='col-lg-3 col-md-3 col-sm-3 col-xs-3'>
-            <ul key={day.weather[0].id} className='day'>
-              <li className='popular-item'>
-                {day.weather[0].description}
-                <div className='popular-rank'>#{index + 1}</div>
-                <ul className='space-list-items'>
-                  <li>{Math.floor(day.temp.eve * 9/5 - 459.67)} ˚F</li>
-                </ul>
-              </li>
+            <ul key={index} className='list-group'>
+              <li className='list-group-item'>Day {index + 1}</li>
+              <li className='list-group-item'>
+                {day.weather[0].description}</li>
+                <li className='list-group-item'>{Math.floor(day.temp.eve * 9/5 - 459.67)} ˚F
+                </li>
             </ul>
           </div>
         )
@@ -67,7 +65,6 @@ class City extends React.Component {
             loading: false
           }
         })
-        console.log(this.state.city);
       }.bind(this)
     );
   }
@@ -84,10 +81,10 @@ class City extends React.Component {
         {!city ?
           <Loading /> :
           <WeatherGrid
-            city={this.state.city}
+            city={city}
           />}
         <button
-          class='Reset'
+          className='Reset btn btn-default'
           onClick={this.handleReset}
         >
           Reset
